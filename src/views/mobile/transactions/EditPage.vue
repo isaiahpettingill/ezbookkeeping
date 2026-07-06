@@ -465,6 +465,9 @@
             <f7-actions-group v-if="pageTypeAndMode?.type === TransactionEditPageType.Transaction && (mode === TransactionEditPageMode.Add || mode === TransactionEditPageMode.Edit) && isTransactionPicturesEnabled() && !showTransactionPictures">
                 <f7-actions-button @click="showTransactionPictures = true">{{ tt('Add Picture') }}</f7-actions-button>
             </f7-actions-group>
+            <f7-actions-group v-if="pageTypeAndMode?.type === TransactionEditPageType.Transaction && mode === TransactionEditPageMode.View && transaction.editable">
+                <f7-actions-button @click="editCurrentTransaction">{{ tt('Edit') }}</f7-actions-button>
+            </f7-actions-group>
             <f7-actions-group v-if="pageTypeAndMode?.type === TransactionEditPageType.Transaction && mode === TransactionEditPageMode.View && transaction.type !== TransactionType.ModifyBalance">
                 <f7-actions-button @click="duplicate(false, false)">{{ tt('Duplicate') }}</f7-actions-button>
                 <f7-actions-button @click="duplicate(true, false)">{{ tt('Duplicate (With Time)') }}</f7-actions-button>
@@ -1192,6 +1195,15 @@ function save(afterAction: AfterSaveAction): void {
                 showToast(error.message || error);
             }
         });
+    }
+}
+
+function editCurrentTransaction(): void {
+    showMoreActionSheet.value = false;
+    mode.value = TransactionEditPageMode.Edit;
+
+    if (isTransactionPicturesEnabled() && settingsStore.appSettings.alwaysShowTransactionPicturesInMobileTransactionEditPage) {
+        showTransactionPictures.value = true;
     }
 }
 
