@@ -141,6 +141,13 @@ import type {
     InsightsExplorerInfoResponse,
 } from '@/models/explorer.ts';
 import type {
+    BudgetCreateRequest,
+    BudgetModifyRequest,
+    BudgetMoveRequest,
+    BudgetDeleteRequest,
+    BudgetInfoResponse
+} from '@/models/budget.ts';
+import type {
     TokenGenerateAPIRequest,
     TokenGenerateMCPRequest,
     TokenRevokeRequest,
@@ -852,6 +859,21 @@ export default {
     },
     deleteExploration: (req: InsightsExplorerDeleteRequest): ApiResponsePromise<boolean> => {
         return axios.post<ApiResponse<boolean>>('v1/insights/explorers/delete.json', req);
+    },
+    getAllBudgets: (): ApiResponsePromise<BudgetInfoResponse[]> => {
+        return axios.get<ApiResponse<BudgetInfoResponse[]>>('v1/budgets/list.json');
+    },
+    addBudget: (req: BudgetCreateRequest): ApiResponsePromise<BudgetInfoResponse> => {
+        return axios.post<ApiResponse<BudgetInfoResponse>>('v1/budgets/add.json', req);
+    },
+    modifyBudget: (req: BudgetModifyRequest): ApiResponsePromise<BudgetInfoResponse> => {
+        return axios.post<ApiResponse<BudgetInfoResponse>>('v1/budgets/modify.json', req);
+    },
+    moveBudget: (req: BudgetMoveRequest): ApiResponsePromise<boolean> => {
+        return axios.post<ApiResponse<boolean>>('v1/budgets/move.json', req);
+    },
+    deleteBudget: (req: BudgetDeleteRequest): ApiResponsePromise<boolean> => {
+        return axios.post<ApiResponse<boolean>>('v1/budgets/delete.json', req);
     },
     recognizeTransactionText: ({ text }: { text: string }): ApiResponsePromise<RecognizedTransactionResponse> => {
         return axios.post<ApiResponse<RecognizedTransactionResponse>>('v1/llm/transactions/recognize_text.json', {

@@ -20,6 +20,9 @@ import StatisticsTransactionPage from '@/views/desktop/statistics/TransactionPag
 
 import InsightsExplorerPage from '@/views/desktop/insights/ExplorerPage.vue';
 
+import BudgetListPage from '@/views/desktop/budgets/ListPage.vue';
+import BudgetReportPage from '@/views/desktop/budgets/ReportPage.vue';
+
 import AccountListPage from '@/views/desktop/accounts/ListPage.vue';
 
 import TransactionCategoryListPage from '@/views/desktop/categories/ListPage.vue';
@@ -151,6 +154,16 @@ const router = createRouter({
                         initStartTime: route.query['startTime'],
                         initEndTime: route.query['endTime']
                     })
+                },
+                {
+                    path: '/budgets',
+                    component: BudgetListPage,
+                    beforeEnter: checkLogin
+                },
+                {
+                    path: '/budgets/report',
+                    component: BudgetReportPage,
+                    beforeEnter: checkLogin
                 },
                 {
                     path: '/account/list',

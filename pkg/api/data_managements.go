@@ -33,6 +33,7 @@ type DataManagementsApi struct {
 	templates               *services.TransactionTemplateService
 	userCustomExchangeRates *services.UserCustomExchangeRatesService
 	insightsExploreres      *services.InsightsExplorerService
+	budgets                 *services.BudgetService
 }
 
 // Initialize a data management api singleton instance
@@ -52,6 +53,7 @@ var (
 		templates:               services.TransactionTemplates,
 		userCustomExchangeRates: services.UserCustomExchangeRates,
 		insightsExploreres:      services.InsightsExplorers,
+		budgets:                 services.Budgets,
 	}
 )
 
@@ -110,6 +112,13 @@ func (a *DataManagementsApi) DataStatisticsHandler(c *core.WebContext) (any, *er
 		return nil, errs.ErrOperationFailed
 	}
 
+	totalBudgetCount, err := a.budgets.GetTotalBudgetCountByUid(c, uid)
+
+	if err != nil {
+		log.Errorf(c, "[data_managements.DataStatisticsHandler] failed to get total budget count for user \"uid:%d\", because %s", uid, err.Error())
+		return nil, errs.ErrOperationFailed
+	}
+
 	totalTransactionTemplateCount, err := a.templates.GetTotalNormalTemplateCountByUid(c, uid)
 
 	if err != nil {
@@ -131,6 +140,7 @@ func (a *DataManagementsApi) DataStatisticsHandler(c *core.WebContext) (any, *er
 		TotalTransactionCount:          totalTransactionCount,
 		TotalTransactionPictureCount:   totalTransactionPictureCount,
 		TotalExplorationCount:          totalExplorationCount,
+		TotalBudgetCount:               totalBudgetCount,
 		TotalTransactionTemplateCount:  totalTransactionTemplateCount,
 		TotalScheduledTransactionCount: totalScheduledTransactionCount,
 	}
@@ -213,6 +223,13 @@ func (a *DataManagementsApi) ClearAllDataHandler(c *core.WebContext) (any, *errs
 
 	if err != nil {
 		log.Errorf(c, "[data_managements.ClearAllDataHandler] failed to delete all explorations, because %s", err.Error())
+		return nil, errs.Or(err, errs.ErrOperationFailed)
+	}
+
+	err = a.budgets.DeleteAllBudgets(c, uid)
+
+	if err != nil {
+		log.Errorf(c, "[data_managements.ClearAllDataHandler] failed to delete all budgets, because %s", err.Error())
 		return nil, errs.Or(err, errs.ErrOperationFailed)
 	}
 

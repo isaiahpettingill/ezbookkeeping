@@ -25,6 +25,7 @@ export function useDataManagementPageBase() {
             totalTransactionTagCount: formatNumberToLocalizedNumerals(parseInt(dataStatistics.value.totalTransactionTagCount)),
             totalTransactionPictureCount: formatNumberToLocalizedNumerals(parseInt(dataStatistics.value.totalTransactionPictureCount)),
             totalExplorationCount: formatNumberToLocalizedNumerals(parseInt(dataStatistics.value.totalExplorationCount)),
+            totalBudgetCount: formatNumberToLocalizedNumerals(parseInt(dataStatistics.value.totalBudgetCount)),
             totalTransactionTemplateCount: formatNumberToLocalizedNumerals(parseInt(dataStatistics.value.totalTransactionTemplateCount)),
             totalScheduledTransactionCount: formatNumberToLocalizedNumerals(parseInt(dataStatistics.value.totalScheduledTransactionCount))
         };

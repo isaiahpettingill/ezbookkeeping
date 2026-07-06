@@ -50,6 +50,12 @@
                         <span class="nav-item-title">{{ tt('Insights Explorer') }}</span>
                     </router-link>
                 </li>
+                <li class="nav-link">
+                    <router-link to="/budgets">
+                        <v-icon class="nav-item-icon" :icon="mdiWalletOutline"/>
+                        <span class="nav-item-title">{{ tt('Budgets') }}</span>
+                    </router-link>
+                </li>
                 <li class="nav-section-title">
                     <div class="title-wrapper">
                         <span class="title-text">{{ tt('Basis Data') }}</span>
@@ -238,6 +244,7 @@ import {
     mdiClipboardTextClockOutline,
     mdiChartPieOutline,
     mdiCompassOutline,
+    mdiWalletOutline,
     mdiSwapHorizontal,
     mdiCogOutline,
     mdiCellphone,

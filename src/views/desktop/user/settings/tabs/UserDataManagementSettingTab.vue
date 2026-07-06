@@ -44,6 +44,12 @@
                                 color: 'warning'
                             },
                             {
+                                title: 'Budgets',
+                                count: displayDataStatistics ? displayDataStatistics.totalBudgetCount : '-',
+                                icon: mdiWalletOutline,
+                                color: 'primary'
+                            },
+                            {
                                 title: 'Transaction Categories',
                                 count: displayDataStatistics ? displayDataStatistics.totalTransactionCategoryCount : '-',
                                 icon: mdiViewDashboardOutline,
@@ -190,6 +196,7 @@ import {
     mdiCreditCardOutline,
     mdiImage,
     mdiCompassOutline,
+    mdiWalletOutline,
     mdiViewDashboardOutline,
     mdiTagOutline,
     mdiClipboardTextOutline,
