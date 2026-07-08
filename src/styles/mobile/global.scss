@@ -174,21 +174,21 @@ i.icon.la, i.icon.las, i.icon.lab {
 /** custom class **/
 :root {
     --default-icon-color: #000;
-    --ebk-primary-color: 255, 204, 204;
-    --f7-theme-color: #ffcccc;
-    --f7-theme-color-rgb: 255, 204, 204;
-    --f7-theme-color-shade: #ff9999;
-    --f7-theme-color-tint: #ffe6e6;
-    --ebk-transaction-tag-chip-bg-color: rgba(0, 0, 0, 0.04);
-}
-
-:root.dark {
-    --default-icon-color: #fff;
     --ebk-primary-color: 34, 139, 34;
     --f7-theme-color: #228b22;
     --f7-theme-color-rgb: 34, 139, 34;
     --f7-theme-color-shade: #1b5e20;
     --f7-theme-color-tint: #2eaf2e;
+    --ebk-transaction-tag-chip-bg-color: rgba(0, 0, 0, 0.04);
+}
+
+:root.dark {
+    --default-icon-color: #fff;
+    --ebk-primary-color: 255, 204, 204;
+    --f7-theme-color: #ffcccc;
+    --f7-theme-color-rgb: 255, 204, 204;
+    --f7-theme-color-shade: #ff9999;
+    --f7-theme-color-tint: #ffe6e6;
     --ebk-transaction-tag-chip-bg-color: rgba(255, 255, 255, 0.04);
 }
 
@@ -346,7 +346,7 @@ html[dir="rtl"] i.icon.icon-with-direction {
 
 /** Replacing the default style of @vuepic/vue-datepicker **/
 .dp--theme-light {
-    --dp-primary-color: #ffcccc;
+    --dp-primary-color: #228b22;
     --dp-background-color: inherit;
     --dp-border-color: #aaa;
     --dp-menu-border-color: #aaa;
@@ -357,7 +357,7 @@ html[dir="rtl"] i.icon.icon-with-direction {
 }
 
 .dp--theme-dark {
-    --dp-primary-color: #228b22;
+    --dp-primary-color: #ffcccc;
     --dp-background-color: inherit;
     --dp-border-color: #555;
     --dp-menu-border-color: #555;

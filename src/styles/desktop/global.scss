@@ -501,12 +501,12 @@ body .v-btn-group {
 
 /** Replacing the default style of @vuepic/vue-datepicker **/
 .dp--theme-light {
-    --dp-primary-color: #ffcccc;
+    --dp-primary-color: #228b22;
     --dp-text-color: rgba(var(--v-theme-on-background), var(--v-high-emphasis-opacity));
 }
 
 .dp--theme-dark {
-    --dp-primary-color: #228b22;
+    --dp-primary-color: #ffcccc;
     --dp-text-color: rgba(var(--v-theme-on-background), var(--v-high-emphasis-opacity));
 }
 
